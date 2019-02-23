@@ -216,7 +216,7 @@ def gssapi_modules(lst):
     return res
 
 
-long_desc = re.sub('\.\. role:: \w+\(code\)\s*\n\s*.+', '',
+long_desc = re.sub(r'\.\. role:: \w+\(code\)\s*\n\s*.+', '',
                    re.sub(r':(python|bash|code):', '',
                           re.sub(r'\.\. code-block:: \w+', '::',
                                  open('README.txt').read())))
@@ -230,7 +230,7 @@ if sys.version_info < (3, 4):
 
 setup(
     name='gssapi',
-    version='1.4.1',
+    version='1.5.1',
     author='The Python GSSAPI Team',
     author_email='sross@redhat.com',
     packages=['gssapi', 'gssapi.raw', 'gssapi.raw._enum_extensions',
@@ -274,6 +274,7 @@ setup(
         extension_file('dce', 'gss_wrap_iov'),
         extension_file('iov_mic', 'gss_get_mic_iov'),
         extension_file('ggf', 'gss_inquire_sec_context_by_oid'),
+        extension_file('set_cred_opt', 'gss_set_cred_option'),
 
         # see ext_rfc6680_comp_oid for more information on this split
         extension_file('rfc6680', 'gss_display_name_ext'),
